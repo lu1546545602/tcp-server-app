@@ -13,17 +13,22 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
         
+    - name: Set up Java environment
+      run: |
+        export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
+        echo "JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> $GITHUB_ENV
+        
     - name: Install system dependencies
       run: |
         sudo apt update
-        sudo apt install -y git zip unzip openjdk-8-jdk python3-pip autoconf automake autopoint build-essential ccache cmake gettext libffi-dev libltdl-dev libssl-dev liblzma-dev libtool pkg-config python3-setuptools sudo zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5
+        sudo apt install -y git zip unzip python3-pip autoconf automake autopoint build-essential ccache cmake gettext libffi-dev libltdl-dev libssl-dev liblzma-dev libtool pkg-config python3-setuptools zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5
         
     - name: Install Python dependencies
       run: |
