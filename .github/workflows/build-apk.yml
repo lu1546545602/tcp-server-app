@@ -36,7 +36,7 @@ jobs:
         buildozer android debug
         
     - name: Upload APK artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: tcp-server-apk
         path: tcp_apk/bin/*.apk
