@@ -32,7 +32,9 @@ jobs:
         
     - name: Build APK with Buildozer
       run: |
-        cd tcp_apk
+        # 首先尝试简化的测试应用
+        cp test_simple.py main.py
+        cp buildozer_simple.spec buildozer.spec
         buildozer android debug
         
     - name: Upload APK artifact
